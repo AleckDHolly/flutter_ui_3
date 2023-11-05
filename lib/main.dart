@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_ui_3/homescreen.dart';
 
 void main() {
@@ -9,7 +10,15 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]);
     return MaterialApp(
+      themeMode: ThemeMode.system,
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
+        /* dark theme settings */
+      ),
       theme: ThemeData(
         colorScheme: ColorScheme.fromSwatch().copyWith(primary: Colors.white),
         useMaterial3: true,
@@ -80,7 +89,15 @@ class MyHomePage extends StatelessWidget {
                           ),
                         ],
                       ),
-                      SizedBox(
+                      Container(
+                        decoration: const BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(
+                              20,
+                            ),
+                          ),
+                        ),
                         width: MediaQuery.of(context).size.width - 30,
                         height: 50,
                         child: ElevatedButton(

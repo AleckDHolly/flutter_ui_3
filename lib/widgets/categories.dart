@@ -22,6 +22,9 @@ class Categories extends StatelessWidget {
                           ? Colors.orange
                           : const Color.fromARGB(92, 158, 158, 158),
                       elevation: 0,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
                     ),
                     onPressed: () {},
                     child: Text(
@@ -29,7 +32,7 @@ class Categories extends StatelessWidget {
                       style: TextStyle(
                         color: categoryName == categoryNames.first
                             ? Colors.white
-                            : const Color.fromARGB(255, 83, 83, 83),
+                            : Colors.black,
                       ),
                     ),
                   ),
