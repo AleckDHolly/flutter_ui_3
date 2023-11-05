@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ui_3/components/subscriptions.dart';
 import 'package:flutter_ui_3/widgets/main_area.dart';
+import 'package:flutter_ui_3/widgets/sub_page.dart';
 import 'package:flutter_ui_3/widgets/subs.dart';
 import 'package:flutter_ui_3/widgets/top_part.dart';
 
@@ -36,25 +38,32 @@ class HomeScreen extends StatelessWidget {
                     ),
                     const Subs(),
                     const Categories(),
-                    MainArea(
-                      image: "images/1.jpg",
-                      text: "Video 1",
-                    ),
-                    MainArea(
-                      image: "images/2.jpg",
-                      text: "Video 1",
-                    ),
-                    MainArea(
-                      image: "images/3.jpg",
-                      text: "Video 1",
-                    ),
-                    MainArea(
-                      image: "images/4.jpg",
-                      text: "Video 1",
-                    ),
-                    MainArea(
-                      image: "images/5.jpg",
-                      text: "Video 1",
+                    ListView.builder(
+                      shrinkWrap: true,
+                      physics: const BouncingScrollPhysics(),
+                      itemCount: subscriptions.length,
+                      itemBuilder: (context, index) {
+                        Subscription sub = subscriptions[index];
+                        return InkWell(
+                          onTap: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => SubPage(
+                                    title: sub.name,
+                                    image: Image(image: sub.image),
+                                    index: sub.tag),
+                              ),
+                            );
+                          },
+                          child: MainArea(
+                            image: Hero(
+                              tag: "animation${sub.tag}",
+                              child: Image(image: sub.image),
+                            ),
+                            text: sub.name,
+                          ),
+                        );
+                      },
                     ),
                   ],
                 ),

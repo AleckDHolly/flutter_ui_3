@@ -91,16 +91,21 @@ class MyHomePage extends StatelessWidget {
                       ),
                       Container(
                         decoration: const BoxDecoration(
-                          color: Colors.white,
                           borderRadius: BorderRadius.all(
                             Radius.circular(
-                              20,
+                              30,
                             ),
                           ),
+                          color: Colors.white,
                         ),
                         width: MediaQuery.of(context).size.width - 30,
                         height: 50,
                         child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.white,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20),
+                              )),
                           onPressed: () {
                             Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) => const HomeScreen(),

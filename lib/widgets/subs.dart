@@ -19,7 +19,7 @@ class Subs extends StatelessWidget {
                     height: 60,
                     width: 60,
                     child: CircleAvatar(
-                      foregroundImage: AssetImage(sub.image),
+                      foregroundImage: sub.image,
                     ),
                   ),
                   Text(sub.name),
